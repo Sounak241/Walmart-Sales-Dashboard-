@@ -1,50 +1,102 @@
-Walmart Sales Dashboard (Power BI)
-Overview
+# Walmart Sales Dashboard (Power BI)
 
-This project presents a Power BI dashboard developed to analyze Walmart sales data across multiple stores, time periods, and economic factors. The objective is to transform raw transactional data into meaningful insights for business decision-making.
+## Description  
+This repository contains a Power BI dashboard developed to analyze Walmart sales data across multiple stores, time periods, and economic factors. The project focuses on transforming raw retail data into interactive visual insights for performance evaluation and decision-making.
 
-Problem Statement
+---
 
-Retail datasets often contain complex patterns influenced by time, holidays, and external economic variables. This project addresses key questions related to sales trends, store performance, and the impact of factors such as fuel price and temperature.
+## Dataset  
+- Source: Kaggle Walmart Sales Dataset  
+- Time Period: 2010–2012  
+- Stores: 45  
+- Records: ~1,000  
 
-Dataset
-Source: Kaggle Walmart Sales Dataset
-Time Period: 2010–2012
-Stores: 45
-Records: ~1,000
-Features include Weekly Sales, Temperature, Fuel Price, CPI, and Unemployment
-Key Features
-Total Sales: 6.74 Billion
-Average Weekly Sales: 1.05 Million
-Holiday Sales: 505.30 Million
-Store-level performance comparison
-Monthly sales trend analysis
-Holiday vs non-holiday sales distribution
-Fuel price vs sales correlation analysis
-Temperature variation across stores
-Interactive filtering by year and store
-Data Processing
-Corrected date format using locale settings
-Converted columns to appropriate data types
-Created Month Name and Month Number columns
-Generated Holiday Type using DAX
-Ensured proper sorting of time-based data
-DAX Measures
-Tools and Technologies
-Power BI Desktop
-Power Query
-DAX
-Microsoft Excel
-Kaggle Dataset
-Insights
-Sales are highest during mid-year and lowest towards year-end
-A majority of sales occur during non-holiday periods
-Certain stores significantly outperform others
-Fuel price shows a weak negative correlation with sales
-Temperature varies notably across store locations
-Future Improvements
-Integration of full dataset
-Geographic visualization of stores
-Additional economic indicators (CPI, unemployment)
-Forecasting and drill-through analysis
-Mobile layout optimization
+---
+
+## Features  
+- KPI metrics including Total Sales, Average Weekly Sales, and Holiday Sales  
+- Monthly sales trend analysis  
+- Store-wise performance comparison  
+- Holiday vs non-holiday sales distribution  
+- Fuel price vs sales correlation analysis  
+- Temperature variation across stores  
+- Interactive filters for year and store selection  
+
+---
+
+## Dashboard Preview  
+![Dashboard Screenshot](./assets/dashboard.png)
+
+---
+
+## Data Processing  
+- Date format correction using locale settings  
+- Data type standardization for numerical and categorical fields  
+- Creation of Month Name and Month Number columns  
+- Holiday classification using DAX  
+- Proper sorting of time-based data  
+
+---
+
+## DAX Measures  
+```DAX
+Total Sales = SUM('Walmart'[Weekly_Sales])
+
+Avg Weekly Sales = AVERAGE('Walmart'[Weekly_Sales])
+
+Total Stores = DISTINCTCOUNT('Walmart'[Store])
+
+Holiday Sales =
+CALCULATE(
+    SUM('Walmart'[Weekly_Sales]),
+    'Walmart'[Holiday_Flag] = 1
+)
+
+Non Holiday Sales =
+CALCULATE(
+    SUM('Walmart'[Weekly_Sales]),
+    'Walmart'[Holiday_Flag] = 0
+)
+```
+
+---
+
+## Tech Stack  
+- Power BI Desktop  
+- Power Query  
+- DAX (Data Analysis Expressions)  
+- Microsoft Excel  
+
+---
+
+## Key Insights  
+- Sales peak mid-year and decline towards year-end  
+- Majority of sales occur during non-holiday periods  
+- Significant variation exists in store performance  
+- Fuel price shows a weak negative correlation with sales  
+- Temperature varies across store locations  
+
+---
+
+## Future Improvements  
+- Integration of the complete dataset  
+- Geographic visualization of store performance  
+- Inclusion of additional economic indicators  
+- Forecasting and drill-through analysis  
+- Mobile layout optimization  
+
+---
+
+## Repository Structure  
+```
+├── data/               # Dataset files
+├── assets/             # Dashboard screenshots
+├── Walmart.pbix        # Power BI file
+└── README.md
+```
+
+---
+
+## Author  
+Sounak Bhattacharyya  
+B.Tech Computer Science and Engineering  
